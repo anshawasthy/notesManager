@@ -127,7 +127,7 @@ const generateShareLink = async (req, res) => {
         workspace.isPublic = true;
         await workspace.save();
         const shareLink =
-            `http://localhost:5173/shared/${workspace.shareId}`;
+            `https://notes-manager.vercel.app/shared/${workspace.shareId}`;
         res.status(200).json({
             shareLink
         });
@@ -139,27 +139,19 @@ const generateShareLink = async (req, res) => {
 };
 
 const getSharedWorkspace = async (req, res) => {
-
     try {
-
         const workspace =
             await workspaceModel.findOne({
-
                 shareId: req.params.shareId,
-
                 isPublic: true
             });
-
         if (!workspace) {
             return res.status(404).json({
                 message: "Shared workspace not found"
             });
         }
-
         res.status(200).json(workspace);
-
     } catch(error) {
-
         res.status(500).json({
             message: error.message
         });

@@ -13,7 +13,7 @@ router.delete('/delete/:workspaceId', authMiddleware, workspaceController.delete
 router.delete('/delete/workspace/:workspaceId/note/:noteId', authMiddleware, workspaceController.deleteNote);
 router.get("/:workspaceId/summarize", summarizeWorkspace);
 router.post("/:workspaceId/command", createNoteFromCommand);
-router.get("/share/:workspaceId", workspaceController.generateShareLink);
+router.get("/:workspaceId/share", workspaceController.generateShareLink);
 router.get("/public/:shareId", workspaceController.getSharedWorkspace);
 
 module.exports = router;

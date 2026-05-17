@@ -194,39 +194,39 @@ const WorkspaceDetails = () => {
       <div className="max-w-6xl mx-auto p-6 relative">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div className="flex items-center gap-4">
-          <button onClick={() => navigate('/workspaces')} className="text-gray-500 hover:text-gray-900 transition">
+          <button onClick={() => navigate('/workspaces')} className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">
             <ArrowLeft size={24} />
           </button>
-          <h2 className="text-3xl font-bold">{workspace.name}</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{workspace.name}</h2>
         </div>
         <div className="flex items-center gap-4 flex-1 md:justify-end">
           <div className="relative max-w-sm w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" size={16} />
             <input 
               type="text" 
               placeholder="Search notes..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-300 bg-white/90 focus:ring-1 focus:ring-gray-500 focus:bg-white shadow-sm transition outline-none"
+              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/90 dark:bg-gray-800/90 text-gray-900 dark:text-white focus:ring-1 focus:ring-gray-500 dark:focus:ring-gray-400 focus:bg-white dark:focus:bg-gray-800 shadow-sm transition outline-none"
             />
           </div>
           <button 
             onClick={handleShare}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition shadow-sm whitespace-nowrap font-medium"
+            className="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 dark:hover:bg-blue-600 transition shadow-sm whitespace-nowrap font-medium"
           >
             <LinkIcon size={18} /> Share
           </button>
-          <div className="w-px h-8 bg-gray-300 mx-1"></div>
+          <div className="w-px h-8 bg-gray-300 dark:bg-gray-700 mx-1"></div>
           <button 
             onClick={() => setIsAIModalOpen(true)}
-            className="bg-purple-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-purple-700 transition shadow-sm whitespace-nowrap font-medium"
+            className="bg-purple-600 dark:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-purple-700 dark:hover:bg-purple-600 transition shadow-sm whitespace-nowrap font-medium"
           >
             <Sparkles size={18} /> AI Generate
           </button>
-          <div className="w-px h-8 bg-gray-300 mx-1"></div>
+          <div className="w-px h-8 bg-gray-300 dark:bg-gray-700 mx-1"></div>
           <button 
             onClick={() => { resetForm(); setIsModalOpen(true); }}
-            className="bg-gray-900 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800 transition shadow-sm whitespace-nowrap font-medium"
+            className="bg-gray-900 dark:bg-gray-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800 dark:hover:bg-gray-600 transition shadow-sm whitespace-nowrap font-medium"
           >
             <Plus size={18} /> Add Note
           </button>
@@ -319,25 +319,25 @@ const WorkspaceDetails = () => {
       {/* notes list */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
         {filteredNotes.map(note => (
-          <div key={note._id} className="bg-white/90 p-6 rounded-xl shadow-sm border border-white/80 relative group hover:shadow-md transition-all duration-200 flex flex-col h-full">
+          <div key={note._id} className="bg-white/90 dark:bg-gray-800/90 p-6 rounded-xl shadow-sm border border-white/80 dark:border-gray-700 relative group hover:shadow-md transition-all duration-200 flex flex-col h-full">
             <div className="flex justify-between items-start mb-3 shrink-0">
-              <h4 className="text-lg font-bold text-gray-900 pr-12 leading-snug">{note.title}</h4>
+              <h4 className="text-lg font-bold text-gray-900 dark:text-white pr-12 leading-snug">{note.title}</h4>
               <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition absolute top-4 right-4">
-                <button onClick={() => startEdit(note)} className="text-gray-500 hover:text-gray-900 p-1.5 bg-gray-100 hover:bg-gray-200 rounded-md transition">
+                <button onClick={() => startEdit(note)} className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-1.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md transition">
                   <Pen size={16} />
                 </button>
-                <button onClick={() => handleDeleteNote(note._id)} className="text-gray-500 hover:text-red-600 p-1.5 bg-gray-100 hover:bg-gray-200 rounded-md transition">
+                <button onClick={() => handleDeleteNote(note._id)} className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 p-1.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md transition">
                   <Trash2 size={16} />
                 </button>
               </div>
             </div>
-            <p className="text-gray-700 text-sm whitespace-pre-wrap mb-6 flex-grow break-words">{note.content}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-sm whitespace-pre-wrap mb-6 flex-grow break-words">{note.content}</p>
             <div className="flex justify-between items-end mt-auto shrink-0 pt-4">
               <div className="flex flex-wrap gap-2 text-xs font-medium">
-                {note.category && <span className="bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full">{note.category}</span>}
-                {note.tags?.map((t, i) => <span key={i} className="bg-gray-200 text-gray-700 px-2.5 py-1 rounded-full">#{t}</span>)}
+                {note.category && <span className="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 px-2.5 py-1 rounded-full">{note.category}</span>}
+                {note.tags?.map((t, i) => <span key={i} className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2.5 py-1 rounded-full">#{t}</span>)}
               </div>
-              <span className="text-xs text-gray-400 whitespace-nowrap pl-4">{timeAgo(note.updateTime)}</span>
+              <span className="text-xs text-gray-400 dark:text-gray-500 whitespace-nowrap pl-4">{timeAgo(note.updateTime)}</span>
             </div>
           </div>
         ))}

@@ -6,12 +6,14 @@ import LoginRegister from './pages/LoginRegister';
 import Workspaces from './pages/Workspaces';
 import WorkspaceDetails from './pages/WorkspaceDetails';
 import SharedWorkspace from "./pages/SharedWorkspace";
+import { ThemeProvider } from './context/ThemeContext';
 
 
 function App() {
 
   return (
-    <Router>
+    <ThemeProvider>
+      <Router>
       <Toaster position="top-right" />
       <Routes>
         <Route
@@ -46,6 +48,7 @@ function App() {
         />
       </Routes>
     </Router>
+    </ThemeProvider>
   );
 }
 

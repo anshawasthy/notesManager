@@ -32,7 +32,7 @@ const SharedWorkspace = () => {
   useEffect(() => {
     const fetchWorkspace = async () => {
       try {
-        const res = await api.get(`/workspace/${shareId}/share`);
+        const res = await api.get(`/workspace/public/${shareId}`);
         setWorkspace(res.data);
       } catch (err) {
         setError('This shared workspace does not exist or is no longer public.');
